@@ -4,6 +4,8 @@ from __future__ import print_function
 import slacker
 import sys
 import argparse
+import sys
+import time
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Spam some jokers.")
@@ -23,6 +25,8 @@ if __name__ == "__main__":
     #slack.chat.post_message(channel, "any updates? :slightly_smiling_face:")
     oldest = "1476328589.000033"
     while True:
+        print("DEBUG")
+        sys.stdout.flush()
         mpim = slack.mpim.history(channel, oldest=oldest).body
         messages = mpim["messages"]
         if messages != []:
@@ -32,8 +36,4 @@ if __name__ == "__main__":
             is_human = "user" in m.keys() # Bots have a "username" but no "user"
             if is_human:
                 if "update" in m["text"].lower():
-                    pass
-                    #slack.chat.post_message(channel, "any updates? :slightly_smiling_face:")
-
-
-
+                    slack.chat.post_message(channel, "any updates? :slightly_smiling_face:")
