@@ -36,5 +36,4 @@ if __name__ == "__main__":
             is_human = "user" in m.keys() # Bots have a "username" but no "user"
             if is_human:
                 if "update" in m["text"].lower():
-                    pass
-                    #slack.chat.post_message(channel, "any updates? :slightly_smiling_face:")
+                    slack.chat.post_message(channel, "any updates? :slightly_smiling_face:")
