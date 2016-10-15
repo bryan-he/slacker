@@ -23,9 +23,9 @@ if __name__ == "__main__":
 
     channel = slack.mpim.open(mpim_users).body["group"]["id"]
     #slack.chat.post_message(channel, "any updates? :slightly_smiling_face:")
-    oldest = "1476328589.000033"
+    oldest = time.time()
     while True:
-        print("DEBUG")
+        print(time.asctime())
         sys.stdout.flush()
         mpim = slack.mpim.history(channel, oldest=oldest).body
         messages = mpim["messages"]
@@ -36,4 +36,5 @@ if __name__ == "__main__":
             is_human = "user" in m.keys() # Bots have a "username" but no "user"
             if is_human:
                 if "update" in m["text"].lower():
-                    slack.chat.post_message(channel, "any updates? :slightly_smiling_face:")
+                    pass
+                    #slack.chat.post_message(channel, "any updates? :slightly_smiling_face:")
