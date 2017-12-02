@@ -21,9 +21,8 @@ if __name__ == "__main__":
             mpim_users.append(u["id"])
             channel = slack.im.open(u["id"])
             for i in range(1000000):
-                print(i)
-                slack.chat.post_message(u["id"], ":coral:")
-
-
-
-
+                try:
+                    slack.chat.post_message(u["id"], "Submit the poster " + str(i))
+                    print(i)
+                except:
+                    print("EXCEPTION")
